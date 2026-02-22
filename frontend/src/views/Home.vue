@@ -1,0 +1,520 @@
+<template>
+  <div class="home">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-gradient">科技赋能品质</span><br>
+          <span class="title-highlight">创新引领未来</span>
+        </h1>
+        <p class="hero-subtitle">专注高品质魔芋粉研发生产，致力于为全球客户提供优质产品</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" @click="$router.push('/products')">探索产品</button>
+          <button class="btn-secondary" @click="$router.push('/contact')">联系我们</button>
+        </div>
+      </div>
+      <div class="hero-decoration">
+        <div class="floating-circle circle-1"></div>
+        <div class="floating-circle circle-2"></div>
+        <div class="floating-circle circle-3"></div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section">
+      <div class="container">
+        <h2 class="section-title">核心优势</h2>
+        <div class="features-grid">
+          <div v-for="feature in features" :key="feature.title" class="feature-card">
+            <div class="feature-icon">{{ feature.icon }}</div>
+            <h3 class="feature-title">{{ feature.title }}</h3>
+            <p class="feature-desc">{{ feature.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Preview -->
+    <section class="products-preview section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">精选产品</h2>
+          <p class="section-subtitle">匠心打造，品质保证</p>
+        </div>
+        <div class="products-grid">
+          <div v-for="product in featuredProducts" :key="product.id" class="product-card" @click="viewProduct(product.id)">
+            <div class="product-image">
+              <img :src="product.image" :alt="product.name" />
+            </div>
+            <div class="product-info">
+              <span class="product-category">{{ product.category }}</span>
+              <h3 class="product-name">{{ product.name }}</h3>
+              <p class="product-price">¥{{ product.price }}/kg</p>
+            </div>
+          </div>
+        </div>
+        <div class="section-actions">
+          <button class="btn-outline" @click="$router.push('/products')">查看全部产品 →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="stats-container">
+        <div v-for="stat in stats" :key="stat.label" class="stat-item">
+          <div class="stat-number">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Preview -->
+    <section class="news-preview section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">最新动态</h2>
+          <p class="section-subtitle">了解我们的最新资讯</p>
+        </div>
+        <div class="news-grid">
+          <div v-for="item in latestNews" :key="item.id" class="news-card" @click="viewNews(item.id)">
+            <div class="news-image">
+              <img :src="item.image" :alt="item.title" />
+            </div>
+            <div class="news-content">
+              <h3 class="news-title">{{ item.title }}</h3>
+              <p class="news-summary">{{ item.summary }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="section-actions">
+          <button class="btn-outline" @click="$router.push('/news')">查看更多资讯 →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+const featuredProducts = ref([])
+const latestNews = ref([])
+
+const features = [
+  {
+    icon: '🔬',
+    title: '自主研发',
+    desc: '拥有专业的研发团队，持续创新生产工艺'
+  },
+  {
+    icon: '🏭',
+    title: '先进设备',
+    desc: '引进国际领先的生产设备，确保产品品质'
+  },
+  {
+    icon: '✅',
+    title: '品质保证',
+    desc: '严格的质量控制体系，每批产品都经过检测'
+  },
+  {
+    icon: '🌍',
+    title: '全球服务',
+    desc: '产品远销全球多个国家和地区'
+  }
+]
+
+const stats = [
+  { value: '9+', label: '年行业经验' },
+  { value: '50+', label: '合作伙伴' },
+  { value: '100%', label: '品质保证' },
+  { value: '24/7', label: '客户服务' }
+]
+
+onMounted(async () => {
+  try {
+    const [productsRes, newsRes] = await Promise.all([
+      axios.get('/api/products?featured=true'),
+      axios.get('/api/news')
+    ])
+    featuredProducts.value = productsRes.data.data.slice(0, 4)
+    latestNews.value = newsRes.data.data.slice(0, 3)
+  } catch (error) {
+    console.error('加载数据失败:', error)
+  }
+})
+
+const viewProduct = (id) => {
+  // 可以添加产品详情页
+  console.log('查看产品:', id)
+}
+
+const viewNews = (id) => {
+  console.log('查看新闻:', id)
+}
+</script>
+
+<style scoped>
+.home {
+  padding-top: 70px;
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, #4a9eff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title-highlight {
+  color: #ffffff;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary, .btn-outline {
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4a9eff, #00d4ff);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(74, 158, 255, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: rgba(74, 158, 255, 0.5);
+  color: #00d4ff;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.hero-decoration {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(0, 212, 255, 0.05));
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.circle-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.section {
+  padding: 100px 20px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #4a9eff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(74, 158, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.feature-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.feature-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.feature-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.products-grid, .news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.product-card, .news-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(74, 158, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.product-card:hover, .news-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.product-image, .news-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.product-image img, .news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.product-card:hover .product-image img,
+.news-card:hover .news-image img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 24px;
+}
+
+.product-category {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 212, 255, 0.1);
+  color: #00d4ff;
+  font-size: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00d4ff;
+}
+
+.stats {
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(0, 212, 255, 0.05));
+  padding: 80px 20px;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 56px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #4a9eff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.news-content {
+  padding: 24px;
+}
+
+.news-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.news-summary {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.section-actions {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(74, 158, 255, 0.5);
+  color: #00d4ff;
+  padding: 14px 36px;
+  font-size: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background: rgba(0, 212, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary, .btn-secondary, .btn-outline {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .features-grid, .products-grid, .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .floating-circle {
+    display: none;
+  }
+}
+</style>
