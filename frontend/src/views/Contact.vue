@@ -93,13 +93,24 @@
               </div>
             </div>
 
-            <!-- Map Placeholder -->
+            <!-- Map Section -->
             <div class="map-section">
               <h3 class="map-title">地图位置</h3>
-              <div class="map-placeholder">
-                <div class="map-icon">🗺️</div>
-                <p>四川省成都市高新区</p>
-                <p>天府大道1000号</p>
+              <div class="map-container">
+                <iframe
+                  class="amap-iframe"
+                  frameborder="0"
+                  src="https://uri.amap.com/marker?position=104.156,30.825&name=道邦科技&coordinate=gaode&callnative=1"
+                ></iframe>
+              </div>
+              <div class="map-actions">
+                <a
+                  href="https://uri.amap.com/marker?position=104.156,30.825&name=道邦科技&coordinate=gaode&callnative=1"
+                  target="_blank"
+                  class="map-btn"
+                >
+                  🗺️ 高德地图导航
+                </a>
               </div>
             </div>
 
@@ -110,7 +121,6 @@
                 <div class="social-link">微信</div>
                 <div class="social-link">微博</div>
                 <div class="social-link">抖音</div>
-                <div class="social-link">LinkedIn</div>
               </div>
             </div>
           </div>
@@ -337,26 +347,46 @@ const handleSubmit = () => {
   margin-bottom: 20px;
 }
 
-.map-placeholder {
+.map-container {
   width: 100%;
-  height: 200px;
+  height: 400px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(74, 158, 255, 0.2);
   border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.amap-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.map-actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 12px;
 }
 
-.map-icon {
-  font-size: 48px;
+.map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #4a9eff, #00d4ff);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
 }
 
-.map-placeholder p {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
+.map-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(74, 158, 255, 0.4);
 }
 
 .social-links {

@@ -127,23 +127,23 @@ const initSampleData = () => {
   if (newsCount === 0) {
     const news = [
       {
-        title: '魔芋科技荣获2024年度食品行业创新奖',
-        summary: '凭借在魔芋深加工领域的持续创新，魔芋科技荣获2024年度食品行业创新奖',
-        content: '在刚刚结束的2024年度食品行业创新大会上，魔芋科技凭借其在魔芋深加工领域的持续创新和技术突破，荣获年度创新奖。这一奖项不仅是对魔芋科技在产品研发方面努力的肯定，也标志着公司在行业内的领先地位。',
+        title: '道邦科技荣获2024年度行业创新奖',
+        summary: '凭借在技术创新领域的持续突破，道邦科技荣获2024年度行业创新奖',
+        content: '在刚刚结束的2024年度行业创新大会上，道邦科技凭借其在技术创新领域的持续突破和研发实力，荣获年度创新奖。这一奖项不仅是对道邦科技在产品研发方面努力的肯定，也标志着公司在行业内的领先地位。',
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800',
         published: 1
       },
       {
         title: '公司二期生产线正式投产，产能提升300%',
         summary: '二期生产线引进国际先进设备，实现生产流程全自动化',
-        content: '经过两年的筹备和建设，魔芋科技二期生产线于今日正式投产。新生产线引进了德国先进的生产设备，实现了从原料投入到成品包装的全自动化生产流程，产能较一期提升了300%，将更好地满足市场需求。',
+        content: '经过两年的筹备和建设，道邦科技二期生产线于今日正式投产。新生产线引进了德国先进的生产设备，实现了从原料投入到成品包装的全自动化生产流程，产能较一期提升了300%，将更好地满足市场需求。',
         image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800',
         published: 1
       },
       {
-        title: '魔芋科技与知名食品企业达成战略合作',
-        summary: '双方将共同研发魔芋健康食品，拓展应用领域',
-        content: '魔芋科技与国内知名食品企业正式签署战略合作协议，双方将发挥各自优势，共同开发新一代魔芋健康食品产品。此次合作将推动魔芋在休闲食品、功能性食品等领域的应用。',
+        title: '道邦科技与知名企业达成战略合作',
+        summary: '双方将共同研发创新产品，拓展应用领域',
+        content: '道邦科技与国内知名企业正式签署战略合作协议，双方将发挥各自优势，共同开发新一代创新产品。此次合作将推动科技创新在更多领域的应用。',
         image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800',
         published: 1
       }
@@ -163,13 +163,13 @@ const initSampleData = () => {
   const insertCompanyInfo = db.prepare(`
     INSERT OR IGNORE INTO company (key, value) VALUES (?, ?)
   `)
-  insertCompanyInfo.run('name', '魔芋科技有限公司')
+  insertCompanyInfo.run('name', '道邦普惠生物科技有限公司')
   insertCompanyInfo.run('slogan', '科技赋能品质，创新引领未来')
-  insertCompanyInfo.run('description', '魔芋科技是一家专注于魔芋粉研发、生产和销售的高新技术企业。公司拥有先进的的生产设备和专业的技术团队，致力于为客户提供高品质的魔芋粉产品和全方位的技术支持。')
-  insertCompanyInfo.run('founded', '2015')
-  insertCompanyInfo.run('address', '四川省成都市高新区天府大道1000号')
-  insertCompanyInfo.run('phone', '028-88888888')
-  insertCompanyInfo.run('email', 'contact@konjac-tech.com')
+  insertCompanyInfo.run('description', '道邦科技是一家专注于科技创新的高新技术企业。公司拥有先进的生产设备和专业的技术团队，致力于为客户提供高品质的产品和全方位的技术支持。')
+  insertCompanyInfo.run('founded', '2021')
+  insertCompanyInfo.run('address', '四川省成都市新都区白螺路117号')
+  insertCompanyInfo.run('phone', '18581996143')
+  insertCompanyInfo.run('email', 'liyidong1984@outlook.com')
 }
 
 initSampleData()

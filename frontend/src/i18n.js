@@ -15,7 +15,7 @@ const translations = {
     // Home
     'home.hero.title': '科技赋能品质',
     'home.hero.subtitle': '创新引领未来',
-    'home.hero.description': '专注高品质魔芋粉研发生产，致力于为全球客户提供优质产品',
+    'home.hero.description': '专注于科技创新，致力于为客户提供卓越的产品和服务',
     'home.explore': '探索产品',
     'home.contact': '联系我们',
     'home.features': '核心优势',
@@ -52,7 +52,7 @@ const translations = {
     // Home
     'home.hero.title': 'Technology Empowers Quality',
     'home.hero.subtitle': 'Innovation Leads the Future',
-    'home.hero.description': 'Dedicated to R&D and production of high-quality konjac powder, committed to providing premium products to global customers',
+    'home.hero.description': 'Dedicated to technological innovation, committed to providing premium products and services to global customers',
     'home.explore': 'Explore Products',
     'home.contact': 'Contact Us',
     'home.features': 'Core Advantages',
@@ -89,7 +89,7 @@ const translations = {
     // Home
     'home.hero.title': '技術が品質を向上',
     'home.hero.subtitle': '革新が未来をリード',
-    'home.hero.description': '高品質コンニャク粉の研究開発と製造に専念し、世界中のお客様に最高品質の製品を提供します',
+    'home.hero.description': '技術革新に専念し、世界中のお客様に最高品質の製品とサービスを提供します',
     'home.explore': '製品を探す',
     'home.contact': 'お問い合わせ',
     'home.features': '核心的強み',

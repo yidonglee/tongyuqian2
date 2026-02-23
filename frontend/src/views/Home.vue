@@ -2,17 +2,44 @@
   <div class="home">
     <!-- Hero Section -->
     <section class="hero">
+      <div class="hero-background">
+        <!-- 大魔芋图像 -->
+        <div class="konjac-shape konjac-shape-1"></div>
+        <div class="konjac-shape konjac-shape-2"></div>
+
+        <!-- 魔芋颗粒背景动画 
+        <div class="konjac-particle particle-1"></div>
+        <div class="konjac-particle particle-2"></div>
+        <div class="konjac-particle particle-3"></div>
+        <div class="konjac-particle particle-4"></div>
+        <div class="konjac-particle particle-5"></div>
+        <div class="konjac-particle particle-6"></div>
+        <div class="konjac-particle particle-7"></div>
+        <div class="konjac-particle particle-8"></div>
+-->
+        <!-- 科技线条 -->
+        <div class="tech-line line-1"></div>
+        <div class="tech-line line-2"></div>
+        <div class="tech-line line-3"></div>
+
+        <!-- 光晕效果 -->
+        <div class="glow-effect glow-1"></div>
+        <div class="glow-effect glow-2"></div>
+        <div class="glow-effect glow-3"></div>
+      </div>
+
       <div class="hero-content">
         <h1 class="hero-title">
           <span class="title-gradient">科技赋能品质</span><br>
           <span class="title-highlight">创新引领未来</span>
         </h1>
-        <p class="hero-subtitle">专注高品质魔芋粉研发生产，致力于为全球客户提供优质产品</p>
+        <p class="hero-subtitle">专注于科技创新，致力于为客户提供卓越的产品和服务</p>
         <div class="hero-buttons">
           <button class="btn-primary" @click="$router.push('/products')">探索产品</button>
           <button class="btn-secondary" @click="$router.push('/contact')">联系我们</button>
         </div>
       </div>
+
       <div class="hero-decoration">
         <div class="floating-circle circle-1"></div>
         <div class="floating-circle circle-2"></div>
@@ -168,6 +195,185 @@ const viewNews = (id) => {
   justify-content: center;
   padding: 60px 20px;
   overflow: hidden;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* 大魔芋形状 */
+.konjac-shape {
+  position: absolute;
+  z-index: 2;
+  animation: floatKonjac 8s ease-in-out infinite;
+}
+
+.konjac-shape::before {
+  content: '🍠';
+  font-size: 200px;
+  opacity: 0.15;
+  filter: drop-shadow(0 0 30px rgba(74, 158, 255, 0.3));
+}
+
+.konjac-shape-1 {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.konjac-shape-1::before {
+  transform: rotate(-20deg);
+}
+
+.konjac-shape-2 {
+  bottom: 10%;
+  right: 5%;
+  animation-delay: 4s;
+}
+
+.konjac-shape-2::before {
+  transform: rotate(20deg);
+}
+
+@keyframes floatKonjac {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-30px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(30px) rotate(-5deg);
+  }
+}
+
+/* 魔芋颗粒 */
+.konjac-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(74, 158, 255, 0.6) 0%, rgba(0, 212, 255, 0.2) 100%);
+  border-radius: 50%;
+  animation: riseUp linear infinite;
+  box-shadow: 0 0 30px rgba(74, 158, 255, 0.5);
+  border: 2px solid rgba(74, 158, 255, 0.3);
+}
+
+.particle-1 { width: 40px; height: 40px; left: 8%; animation-duration: 10s; animation-delay: 0s; }
+.particle-2 { width: 30px; height: 30px; left: 20%; animation-duration: 12s; animation-delay: 1.5s; }
+.particle-3 { width: 50px; height: 50px; left: 35%; animation-duration: 14s; animation-delay: 3s; }
+.particle-4 { width: 35px; height: 35px; left: 50%; animation-duration: 11s; animation-delay: 4.5s; }
+.particle-5 { width: 45px; height: 45px; left: 65%; animation-duration: 13s; animation-delay: 6s; }
+.particle-6 { width: 32px; height: 32px; left: 78%; animation-duration: 10.5s; animation-delay: 7.5s; }
+.particle-7 { width: 55px; height: 55px; left: 88%; animation-duration: 15s; animation-delay: 9s; }
+.particle-8 { width: 38px; height: 38px; left: 12%; animation-duration: 12.5s; animation-delay: 10.5s; }
+
+@keyframes riseUp {
+  0% {
+    transform: translateY(100vh) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 科技线条 */
+.tech-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+  animation: scanLine 3s linear infinite;
+}
+
+.line-1 {
+  top: 20%;
+  width: 200px;
+  animation-delay: 0s;
+}
+
+.line-2 {
+  top: 40%;
+  width: 300px;
+  animation-delay: 1s;
+}
+
+.line-3 {
+  top: 60%;
+  width: 250px;
+  animation-delay: 2s;
+}
+
+@keyframes scanLine {
+  0% {
+    left: -300px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* 光晕效果 */
+.glow-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(74, 158, 255, 0.2) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.glow-1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.glow-2 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  right: 10%;
+  animation-delay: 1.5s;
+}
+
+.glow-3 {
+  width: 350px;
+  height: 350px;
+  bottom: 10%;
+  left: 30%;
+  animation-delay: 3s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
 }
 
 .hero-content {

@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
-        <h3 class="footer-title">魔芋科技</h3>
+        <h3 class="footer-title">道邦科技</h3>
         <p class="footer-desc">科技赋能品质<br>创新引领未来</p>
       </div>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© {{ new Date().getFullYear() }} 魔芋科技 版权所有</p>
+      <p>© {{ new Date().getFullYear() }} 道邦科技 版权所有</p>
     </div>
   </footer>
 </template>
@@ -45,9 +45,9 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const companyInfo = ref({
-  address: '四川省成都市高新区天府大道1000号',
-  phone: '028-88888888',
-  email: 'contact@konjac-tech.com'
+  address: '四川省成都市新都区白螺路117号',
+  phone: '18581996143',
+  email: 'liyidong1984@outlook.com'
 })
 
 const quickLinks = [

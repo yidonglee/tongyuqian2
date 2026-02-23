@@ -16,7 +16,7 @@
             <h2 class="section-title">公司简介</h2>
             <div class="intro-text">
               <p>{{ companyInfo.description }}</p>
-              <p>自成立以来，魔芋科技始终秉承"质量第一、客户至上"的经营理念，不断引进先进的生产设备和技术，建立了完善的质量管理体系。公司通过了ISO9001质量管理体系认证，产品远销欧美、东南亚等多个国家和地区。</p>
+              <p>自成立以来，道邦科技始终秉承"质量第一、客户至上"的经营理念，不断引进先进的生产设备和技术，建立了完善的质量管理体系。公司通过了ISO9001质量管理体系认证，产品远销欧美、东南亚等多个国家和地区，未来会积极拓展和深耕国内市场。</p>
             </div>
             <div class="intro-stats">
               <div class="intro-stat">
@@ -24,11 +24,11 @@
                 <div class="stat-label">成立年份</div>
               </div>
               <div class="intro-stat">
-                <div class="stat-value">9+</div>
+                <div class="stat-value">6+</div>
                 <div class="stat-label">年行业经验</div>
               </div>
               <div class="intro-stat">
-                <div class="stat-value">100+</div>
+                <div class="stat-value">50+</div>
                 <div class="stat-label">员工人数</div>
               </div>
             </div>
@@ -50,12 +50,12 @@
           <div class="mv-card">
             <div class="mv-icon">🎯</div>
             <h3>企业使命</h3>
-            <p>为客户提供高品质的魔芋粉产品，推动魔芋产业的可持续发展，为人类健康事业贡献力量</p>
+            <p>为客户提供高品质的产品，推动产业的可持续发展，为社会进步贡献力量</p>
           </div>
           <div class="mv-card">
             <div class="mv-icon">👁️</div>
             <h3>企业愿景</h3>
-            <p>成为全球领先的魔芋粉供应商，引领行业技术发展方向，打造世界级魔芋品牌</p>
+            <p>成为全球领先的科技创新企业，引领行业技术发展方向，打造世界级品牌</p>
           </div>
           <div class="mv-card">
             <div class="mv-icon">💡</div>
@@ -80,7 +80,7 @@
       </div>
     </section>
 
-    <!-- Team -->
+    <!-- Team 
     <section class="team section">
       <div class="container">
         <h2 class="section-title">核心团队</h2>
@@ -94,7 +94,7 @@
         </div>
       </div>
     </section>
-
+-->
     <!-- Certifications -->
     <section class="certifications section">
       <div class="container">
